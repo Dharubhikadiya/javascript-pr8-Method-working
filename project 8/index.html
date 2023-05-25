@@ -1,0 +1,135 @@
+<style>
+    body{
+        background-color: rgba(232, 232, 232, 0.932);
+    }
+    label{
+        font-size: 18px;
+    }
+    input{
+        width: 180px;
+        height: 30px;
+        border-radius: 10px;
+        border: none;
+        margin:0 9px;
+        padding-left: 10px;
+    }
+    button{
+        width: 120px;
+        height: 35px;
+        background-color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 10px;
+    }
+    .add input{
+        height: 70px;
+    }
+    .gen input{
+        width: 16px;
+        height: 12px;
+    }
+</style>
+
+<center>
+
+    <h1>Form</h1>
+
+    <form>
+        <table>
+        <label>First Name:</label>
+        <input type="text" id="name" placeholder="Enter your first name"></br></br>
+
+        <label>Last Name:</label>
+        <input type="text" id="name2" placeholder="Enter your Last name"></br></br>
+
+        <label>Email Id:</label>
+        <input type="mail" id="email" placeholder="Enter your email id"></br></br>
+
+        <label>Contact Number:</label>
+        <input type="tel:" id="phone" placeholder="1234-567-890"></br></br>
+
+        <div class="add">
+        <label>Address:</label>
+        <input type="text" id="Address"></br></br>
+        </div>
+
+        <label>Birth Date:</label>
+        <input type="date" id="Birth"></br></br>
+
+        <div class="gen">
+        <label>Gender:</label>
+		 <input type="radio" id="gender" name="gender">male</input>
+		 <input type="radio" id="gender" name="gender">female</input>
+		 <input type="radio" id="gender" name="gender">other</input></br></br>
+        </div>
+
+        <label>password:</label>
+        <input type="password" id="password"></br></br>
+
+        <label>Confirm Password:</label>
+        <input type="password" id="password2"></br></br>
+
+        <button type="submit" onclick="save()">
+        Submit
+    </button>
+    <div id="arror"></div>
+    </table>
+    </form>
+</center>
+
+<script type="text/javascript">
+
+    const save = () => {
+        let name = document.getElementById("name").value;
+        let name2 = document.getElementById("name2").value;
+        let email = document.getElementById("email").value;
+        let phone = document.getElementById("phone").value;
+        let Address = document.getElementById("Address").value;
+        let Birth = document.getElementById("Birth").value;
+        let password = document.getElementById("password").value;
+        let gender = document.getElementById("gender").value;
+        let password2 = document.getElementById("password2").value;
+
+        var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        var call = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+        var nam = /^[a-zA-Z\-]+$/;
+        
+        try{
+
+        if (!name || !name2 || !email || !phone || !password || !password2) {
+            throw alert("please fill all records");
+            return false;
+        }
+
+        if (!email.match(mailformat)) {
+            throw alert("email is not valid");
+            return false;
+        }
+
+        if (password != password2) {
+            throw alert("password is not match");
+            return false;
+        }
+
+        if (!phone.match(call)) {
+            throw alert("Please Enter 10 Digit Mobile No.");
+            return false;
+        }
+
+        if (!name.match(nam)) {
+            throw alert("Please enter name in only character");
+            return false;
+        }
+
+        if (!name2.match(nam)) {
+            throw alert("Please enter name in only character");
+            return false;
+        }
+    }
+catch(arror){
+
+    document.getElementById('arr').innerHTML = arror;
+
+}
+        }
+
+</script>
